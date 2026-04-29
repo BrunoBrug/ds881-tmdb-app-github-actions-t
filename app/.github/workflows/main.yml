@@ -1,5 +1,5 @@
 name: CI-CD-Pipeline
-#configura os gatilhos
+
 on:
   push:
     branches:
@@ -12,18 +12,18 @@ jobs:
     defaults:
       run:
         working-directory: ./app
-    steps: #baixa o codigo do repositorio na maquina virtual
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js #configura o node.js 
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm' 
+          cache: 'npm'
           cache-dependency-path: ./app/package-lock.json
 
-      - name: Install Dependencies 
+      - name: Install Dependencies
         run: npm ci
 
       - name: Run Tests
